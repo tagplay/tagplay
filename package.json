@@ -1,0 +1,27 @@
+{
+  "name": "tagplay",
+  "version": "0.0.0",
+  "description": "A wrapper for the Tagplay API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tagplay/tagplay.git"
+  },
+  "keywords": [
+    "tagplay",
+    "wrapper",
+    "api"
+  ],
+  "author": "Fannar Snær <fannar@lambagras.is>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tagplay/tagplay/issues"
+  },
+  "homepage": "https://github.com/tagplay/tagplay",
+  "dependencies": {
+    "superagent": "^0.21.0"
+  }
+}
