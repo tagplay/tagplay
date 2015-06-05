@@ -46,20 +46,20 @@ Client.prototype.getPost = function(project_id, feed_id, post_id, options, cb) {
 /** Actions for Post */
 Client.prototype.likePost = function(project_id, feed_id, post_id, cb) {
   var url = [this._url, 'project', project_id, 'feed', feed_id, 'post', post_id, 'like'].join('/');
-  request.get(url, this._token, null, cb);
+  request.post(url, this._token, null, cb);
 };
 
 Client.prototype.unlikePost = function(project_id, feed_id, post_id, cb) {
   var url = [this._url, 'project', project_id, 'feed', feed_id, 'post', post_id, 'unlike'].join('/');
-  request.get(url, this._token, null, cb);
+  request.post(url, this._token, null, cb);
 };
 
 Client.prototype.flagPost = function(project_id, feed_id, post_id, cb) {
   var url = [this._url, 'project', project_id, 'feed', feed_id, 'post', post_id, 'flag'].join('/');
-  request.get(url, this._token, null, cb);
+  request.post(url, this._token, null, cb);
 };
 
 Client.prototype.unflagPost = function(project_id, feed_id, post_id, cb) {
   var url = [this._url, 'project', project_id, 'feed', feed_id, 'post', post_id, 'unflag'].join('/');
-  request.get(url, this._token, null, cb);
+  request.post(url, this._token, null, cb);
 };
