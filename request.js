@@ -36,8 +36,10 @@ function submit(method, url, token, options, cb) {
 function querystring(options) {
   if (!options) return '';
 
+  var allowedKeys = ['limit', 'offset', 'filter']
+
   var qs = Object.keys(options).map(function(key) {
-    if (key === 'limit' || key === 'offset') {
+    if (allowedKeys.indexOf(key) !== -1) {
       return key + '=' + options[key];
     }
   }).filter(Boolean);
