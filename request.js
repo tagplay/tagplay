@@ -20,17 +20,22 @@ function submit(method, url, token, options, cb) {
   }
 
   url = url + querystring(options);
-  request(method, url)
-    //.set('User-Agent', 'tagplay npm lib v0.0.0')
-    .set('Authorization', 'Bearer ' + token)
-    .end(function(response) {
-      var body = response.body;
-      if (!response.ok) {
-        body.statusCode = response.statusCode;
-        return cb(body);
-      }
-      return cb(null, body);
-    });
+
+  var req = request(method, url);
+  if (token) {
+    req.set('Authorization', 'Bearer ' + token);
+  }
+  req.end(function(err, response) {
+    if (err) {
+      return cb(err);
+    }
+    var body = response.body;
+    if (!response.ok) {
+      body.statusCode = response.statusCode;
+      return cb(body);
+    }
+    return cb(null, body);
+  });
 }
 
 function querystring(options) {
