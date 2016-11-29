@@ -9,9 +9,7 @@ function Client (opts) {
   if (!opts) opts = {};
 
   this._url = opts.url || 'https://api.tagplay.co/v1';
-  this._iframelyUrl = opts.iframelyUrl || 'http://iframely.tagplay.is';
   this._url = this._url.replace(/\/$/, '');
-  this._iframelyUrl = this._iframelyUrl.replace(/\/$/, '');
   this._token = opts.token;
 }
 
@@ -68,9 +66,11 @@ Client.prototype.unflagPost = function(project_id, feed_id, post_id, cb) {
 
 /** iframely integration */
 Client.prototype.getEmbedInfo = function(link, options, cb) {
-  var optionPairs = Object.keys(options).map(function (key) {
-    return key + '=' + encodeURIComponent(options[key]);
-  });
-  var url = [this._iframelyUrl, 'iframely'].join('/') + '?url=' + encodeURIComponent(link) + (options ? ('&' + optionPairs.join('&')) : '');
-  request.get(url, null, null, cb);
+  if (options) {
+    var optionPairs = Object.keys(options).map(function (key) {
+      return key + '=' + encodeURIComponent(options[key]);
+    });
+  }
+  var url = [this._url, 'embed'].join('/') + '?url=' + encodeURIComponent(link) + (options ? ('&' + optionPairs.join('&')) : '');
+  request.get(url, this._token, null, cb);
 };
