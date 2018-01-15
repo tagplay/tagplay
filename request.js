@@ -25,6 +25,7 @@ function submit(method, url, token, options, cb) {
   if (token) {
     req.set('Authorization', 'Bearer ' + token);
   }
+  req.timeout(30 * 1000); // 30 seconds
   req.end(function(err, response) {
     if (err) {
       return cb(err);
