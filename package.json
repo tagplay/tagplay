@@ -1,6 +1,6 @@
 {
   "name": "tagplay",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A wrapper for the Tagplay API",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/tagplay/tagplay",
   "dependencies": {
-    "superagent": "^2.3.0"
+    "superagent": "^3.8.3"
   }
 }
